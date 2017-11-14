@@ -21,6 +21,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
  */
+
 //Externals includes
 #include "json.hpp"
 using json = nlohmann::json;
@@ -49,7 +50,7 @@ void SceneManager::Init()
 		{
 			if (firstScenePath.extension() == fs::path(".scene"))
 			{
-				currentScene = LoadScene(firstScenePath.c_str());
+				currentScene = LoadScene(firstScenePath.string());
 			}
 		}
 	}
@@ -83,8 +84,11 @@ Scene* SceneManager::LoadScene(std::string sceneName)
 		Log::GetInstance()->Error("THE SCENE FILE IS NOT JSON");
 		return nullptr;
 	}
+
 	Scene* scene = new Scene();
-	scene->name = sceneJson["name"];
+	scene->name == sceneJson["name"];
+	std::cout << scene->name;
+
 	for(json gameObjectJson : sceneJson["gameObjects"])
 	{
 		GameObject* gameObject = GameObject::LoadGameObject(gameObjectJson);
