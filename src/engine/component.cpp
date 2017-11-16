@@ -23,7 +23,7 @@
  */
 
 #include <engine/component.h>
-namespace sfge
+namespace mmgga
 {
 
 Component::Component(GameObject& parentObject) :

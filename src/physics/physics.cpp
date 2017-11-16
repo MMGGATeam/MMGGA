@@ -24,7 +24,7 @@ SOFTWARE.
 
 #include <physics/physics.h>
 
-namespace sfge
+namespace mmgga
 {
 
 void PhysicManager::Init()

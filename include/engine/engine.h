@@ -28,7 +28,7 @@ SOFTWARE.
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <engine/utility.h>
 #include <engine/config.h>
-namespace sfge
+namespace mmgga
 {
 /**
 * \brief The main Engine class to centralise the frame process and the references

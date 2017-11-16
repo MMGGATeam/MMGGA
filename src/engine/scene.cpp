@@ -37,7 +37,7 @@ using json = nlohmann::json;
 namespace fs = std::experimental::filesystem;
 
 
-namespace sfge
+namespace mmgga
 {
 
 void SceneManager::Init()

@@ -33,13 +33,13 @@ SOFTWARE.
 
 #include <sstream>
 
-namespace sfge
+namespace mmgga
 {
 
 void GraphicsManager::Init()
 {
 	Configuration* config = Engine::GetInstance()->GetConfig();
-	m_Window = new sf::RenderWindow(sf::VideoMode(config->screenResolution.x, config->screenResolution.y), "SFGE 0.1");
+	m_Window = new sf::RenderWindow(sf::VideoMode(config->screenResolution.x, config->screenResolution.y), "MMGGA 0.1");
 	if (config->maxFramerate)
 	{
 		m_Window->setFramerateLimit(config->maxFramerate);

@@ -24,7 +24,7 @@ SOFTWARE.
 
 #include <graphics/sprite.h>
 
-namespace sfge
+namespace mmgga
 {
 
 Sprite* Sprite::LoadSprite(json componentJson)

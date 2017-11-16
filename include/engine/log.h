@@ -30,7 +30,7 @@
 
 #include <engine/utility.h>
 
-namespace sfge
+namespace mmgga
 {
 /**
 * \brief Log takes the different message from different parts of the program and write them in the console

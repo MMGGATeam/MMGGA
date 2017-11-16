@@ -26,7 +26,7 @@
 #include <engine/component.h>
 #include <graphics/sprite.h>
 
-namespace sfge
+namespace mmgga
 {
 void GameObject::Update(sf::Time dt)
 {

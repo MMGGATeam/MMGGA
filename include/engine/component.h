@@ -28,7 +28,7 @@
 #include <SFML/System.hpp>
 #include <engine/game_object.h>
 
-namespace sfge
+namespace mmgga
 {
 class Transform;
 /**

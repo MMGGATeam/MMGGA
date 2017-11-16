@@ -33,7 +33,7 @@ using json = nlohmann::json;
 #include <list>
 #include <string>
 
-namespace sfge
+namespace mmgga
 {
 
 class Component;

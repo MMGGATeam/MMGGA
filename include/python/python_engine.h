@@ -27,7 +27,7 @@
 
 #include <engine/engine.h>
 #include <SFML/System/Time.hpp>
-namespace sfge
+namespace mmgga
 {
 /**
 * \brief Manage the python interpreter

@@ -32,7 +32,7 @@ SOFTWARE.
 // for convenience
 using json = nlohmann::json;
 
-namespace sfge
+namespace mmgga
 {
 
 Configuration* ConfigManager::LoadConfig(std::string configFilename)

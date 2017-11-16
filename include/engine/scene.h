@@ -31,7 +31,7 @@
 
 #include <engine/engine.h>
 
-namespace sfge
+namespace mmgga
 {
 
 class GameObject;

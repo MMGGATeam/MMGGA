@@ -24,7 +24,7 @@
 
 #include <engine/utility.h>
 
-namespace sfge
+namespace mmgga
 {
 
 }

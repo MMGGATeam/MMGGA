@@ -26,7 +26,7 @@ SOFTWARE.
 #define SFGE_GRAPHICS_H
 #include <engine/engine.h>
 
-namespace sfge
+namespace mmgga
 {
 
 

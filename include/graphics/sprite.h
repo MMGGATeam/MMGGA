@@ -35,7 +35,7 @@ SOFTWARE.
 //Dependencies
 #include <SFML/Graphics.hpp>
 
-namespace sfge
+namespace mmgga
 {
 
 /**

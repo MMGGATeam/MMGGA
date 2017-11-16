@@ -27,7 +27,7 @@ SOFTWARE.
 
 #include <engine/engine.h>
 
-namespace sfge
+namespace mmgga
 {
 
 /**

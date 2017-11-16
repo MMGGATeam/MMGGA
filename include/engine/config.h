@@ -31,7 +31,7 @@ SOFTWARE.
 //SFGE includes
 #include <engine/utility.h>
 
-namespace sfge
+namespace mmgga
 {
 /**
 * \brief Used by the Engine to get a Configuration.
