@@ -28,13 +28,6 @@
 
 namespace mmgga
 {
-	GameObject GameObject::gameObject()
-	{
-		GameObject* gameObject = new GameObject();
-		gameObject->m_Components;
-		return *gameObject;
-	}
-
 	void GameObject::Update(sf::Time dt)
 {
 	for(Component* component : m_Components)
@@ -42,12 +35,6 @@ namespace mmgga
 		component->Update(dt);
 	}
 }
-
-void GameObject::AddComponent(Component &component)
-{
-	
-}
-
 
 GameObject* GameObject::LoadGameObject(json gameObjectJson)
 {

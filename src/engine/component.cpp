@@ -34,7 +34,7 @@ Component::Component(GameObject& parentObject) :
 
 Transform* Transform::LoadTransform(json componentJson)
 {
-	
+	return nullptr;
 }
 
 void Transform::Update(sf::Time dt)
