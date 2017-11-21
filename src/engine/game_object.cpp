@@ -32,7 +32,6 @@ namespace mmgga
 {
 	for(Component* component : m_Components)
 	{
-		component->Update(dt);
 	}
 }
 

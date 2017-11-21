@@ -25,7 +25,6 @@ SOFTWARE.
 
 #include <engine/engine.h>
 #include <engine/log.h>
-#include<engine/game_object.h>
 
 int main()
 {
