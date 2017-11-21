@@ -31,9 +31,11 @@
 namespace mmgga
 {
 class Transform;
+
 /**
  * \brief A GameObject Component that can be anything
  */
+	
 class Component
 {
 public:

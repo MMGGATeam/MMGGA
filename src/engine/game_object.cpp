@@ -28,7 +28,14 @@
 
 namespace mmgga
 {
-void GameObject::Update(sf::Time dt)
+	GameObject GameObject::gameObject()
+	{
+		GameObject* gameObject = new GameObject();
+		gameObject->m_Components;
+		return *gameObject;
+	}
+
+	void GameObject::Update(sf::Time dt)
 {
 	for(Component* component : m_Components)
 	{
@@ -36,10 +43,18 @@ void GameObject::Update(sf::Time dt)
 	}
 }
 
+void GameObject::AddComponent(Component &component)
+{
+	
+}
+
+
 GameObject* GameObject::LoadGameObject(json gameObjectJson)
 {
+	std::string jsonName = gameObjectJson["name"];
 	GameObject* gameObject = new GameObject();
-	gameObject->name = gameObjectJson["name"];
+	gameObject->name = jsonName;
+
 	for(json componentJson : gameObjectJson["components"])
 	{
 		Component* component = nullptr;

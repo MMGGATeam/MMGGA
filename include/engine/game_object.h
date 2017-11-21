@@ -48,7 +48,9 @@ public:
 	* \brief Update the GameObject and its Components
 	* \param dt Delta time since last frame
 	*/
+	GameObject gameObject();
 	void Update(sf::Time dt);
+	void AddComponent(Component &component);
 	/**
 	* \brief Load a GameObject and create all its Component
 	* \param gameObjectJson the sub json associated with the Game Object
@@ -57,6 +59,7 @@ public:
 	static GameObject* LoadGameObject(json gameObjectJson);
 protected:
 	std::list<Component*> m_Components;
+	std::list<GameObject*> m_GameObjects;
 	std::string name;
 };
 }
