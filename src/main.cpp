@@ -26,7 +26,6 @@ SOFTWARE.
 #include <engine/engine.h>
 #include <engine/log.h>
 
-
 int main()
 {
     mmgga::Log::GetInstance()->Msg("MMGGA 0.1 by SAE Institute Switzerland AG");

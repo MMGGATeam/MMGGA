@@ -29,7 +29,7 @@ namespace mmgga
 Component::Component(GameObject& parentObject) :
 	gameObject(parentObject)
 {
-
+	
 }
 
 Transform* Transform::LoadTransform(json componentJson)
