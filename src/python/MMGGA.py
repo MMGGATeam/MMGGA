@@ -48,3 +48,11 @@ class Scene:
         pass
     def Destroy(self):
         pass
+
+#Input Zone
+class InputManager:
+
+    def Init(self):
+        pass
+    def Update(self,dt):
+        pass
