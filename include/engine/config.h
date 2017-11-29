@@ -22,8 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef SFGE_CONFIG_H
-#define SFGE_CONFIG_H
+#ifndef MMGGA_CONFIG_H
+#define MMGGA_CONFIG_H
 //Externals include
 #include <SFML/System/Vector2.hpp>
 //STL includes

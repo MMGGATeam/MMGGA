@@ -22,8 +22,8 @@
  SOFTWARE.
  */
 
-#ifndef SFGE_PYENGINE_H
-#define SFGE_PYENGINE_H
+#ifndef MMGGA_PYENGINE_H
+#define MMGGA_PYENGINE_H
 
 #include <engine/engine.h>
 #include <SFML/System/Time.hpp>
