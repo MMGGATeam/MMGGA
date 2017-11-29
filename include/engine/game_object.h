@@ -23,8 +23,8 @@
  */
 
 
-#ifndef SFGE_GAMEOBJECT_H
-#define SFGE_GAMEOBJECT_H
+#ifndef MMGGA_GAMEOBJECT_H
+#define MMGGA_GAMEOBJECT_H
 //External includes
 #include "json.hpp"
 using json = nlohmann::json;

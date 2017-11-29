@@ -22,8 +22,8 @@
  SOFTWARE.
  */
 
-#ifndef SFGE_LOG_H
-#define SFGE_LOG_H
+#ifndef MMGGA_LOG_H
+#define MMGGA_LOG_H
 
 #include <iostream>
 #include <string>

@@ -22,8 +22,8 @@
  SOFTWARE.
  */
 
-#ifndef SFGE_COMPONENT_H
-#define SFGE_COMPONENT_H
+#ifndef MMGGA_COMPONENT_H
+#define MMGGA_COMPONENT_H
 //Externals includes
 #include <SFML/System.hpp>
 #include <engine/game_object.h>

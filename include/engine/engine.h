@@ -22,8 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef SFGE_ENGINE_H
-#define SFGE_ENGINE_H
+#ifndef MMGGA_ENGINE_H
+#define MMGGA_ENGINE_H
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <engine/utility.h>
