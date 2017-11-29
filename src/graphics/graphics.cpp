@@ -73,11 +73,6 @@ void GraphicsManager::CheckVersion()
 	Log::GetInstance()->Msg(log_message.str());
 }
 
-void checkVersion()
-{
-
-}
-
 
 void GraphicsManager::Destroy()
 {
