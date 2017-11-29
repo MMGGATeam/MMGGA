@@ -23,8 +23,8 @@
  */
 
 
-#ifndef SFGE_SCENE_H
-#define SFGE_SCENE_H
+#ifndef MMGGA_SCENE_H
+#define MMGGA_SCENE_H
 
 
 #include <list>
