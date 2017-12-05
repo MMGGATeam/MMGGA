@@ -44,7 +44,8 @@ namespace mmgga
 class Sprite : public Component
 {
 public:
-	static Sprite* LoadSprite(json componentJson);
+	Sprite* LoadSprite(json componentJson);
+	void Draw(sf::RenderWindow& window);
 protected:
 	std::string filename;
 	sf::Sprite* sprite;

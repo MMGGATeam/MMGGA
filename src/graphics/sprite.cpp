@@ -29,7 +29,17 @@ namespace mmgga
 
 Sprite* Sprite::LoadSprite(json componentJson)
 {
-	return nullptr;
+	sf::Sprite newSprite;
+
+	/*newSprite.setOrigin(componentJson);
+	newSprite.setScale(componentJson);
+	newSprite.setTexture(mmgga::TextureManager::GetTexture());*/
+
+}
+
+void Sprite::Draw(sf::RenderWindow& window)
+{
+	
 }
 
 unsigned int TextureManager::LoadTexture(std::string filename)
@@ -92,7 +102,10 @@ sf::Texture* TextureManager::GetTexture(unsigned int text_id)
 	{
 		return &texturesMap[text_id];
 	}
-	return nullptr;
+	else
+	{
+		return nullptr;
+	}
 }
 
 }
