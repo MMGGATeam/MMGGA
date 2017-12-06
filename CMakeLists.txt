@@ -103,7 +103,27 @@ if(NOT WIN32)
 LIST(APPEND MMGGA_LIBRARIES
   stdc++fs)
 ENDIF()
-include_directories(include/)
 
-add_executable(MMGGA src/main.cpp ${MMGGA_SRC})
-target_link_libraries(MMGGA PUBLIC ${MMGGA_LIBRARIES})
+
+#MMGGA_COMMON
+add_library(MMGGA_COMMON STATIC ${MMGGA_SRC})
+include_directories(include/)
+target_link_libraries(MMGGA_COMMON PUBLIC ${MMGGA_LIBRARIES})
+
+#MMGGA_TEST
+SET(MMGGA_TEST_DIR ${CMAKE_SOURCE_DIR}/tests)
+file( GLOB TEST_FILES ${MMGGA_TEST_DIR}/*.cpp )
+foreach( test_file ${TEST_FILES} )
+	
+    # I used a simple string replace, to cut off .cpp.
+    file(RELATIVE_PATH test_relative_path ${MMGGA_TEST_DIR} ${test_file})
+    MESSAGE("ADDING SOURCE TEST: ${test_relative_path}")
+    string( REPLACE ".cpp" "" test_name ${test_relative_path} )
+    add_executable( ${test_name} ${test_file} )
+    # Make sure YourLib is linked to each app
+    target_link_libraries( ${test_name} PUBLIC MMGGA_COMMON )
+endforeach( test_file ${TEST_FILES} )
+ 
+#MMGGA
+add_executable(MMGGA src/main.cpp)
+target_link_libraries(MMGGA PUBLIC MMGGA_COMMON)

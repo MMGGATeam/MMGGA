@@ -38,6 +38,11 @@ public:
 	* \param filename where the texture is stocked
 	*/
 	void LoadTexture(std::string filename);
+	/**
+	* \brief get the loaded texture from texture cache
+	* \param filename where the texture is stocked
+	* \return pointer to sf::Texture or nullptr
+	*/
 	sf::Texture* GetTexture(std::string textureName);
 	~TextureManager();
 private:

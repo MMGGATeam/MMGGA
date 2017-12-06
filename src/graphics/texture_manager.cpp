@@ -60,7 +60,8 @@ sf::Texture* TextureManager::GetTexture(std::string textureName)
 		{
 			break;
 		}
-	}	
+	}
+	return nullptr;
 }
 
 TextureManager::~TextureManager()
