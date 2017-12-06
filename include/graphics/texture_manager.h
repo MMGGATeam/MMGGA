@@ -23,9 +23,11 @@ SOFTWARE.
 */
 #ifndef MMGGA_TEXTURE_MANAGER_H
 #define MMGGA_TEXTURE_MANAGER_H
+
 #include <map>
 #include <string>
 #include <SFML/Graphics.hpp>
+
 
 namespace mmgga
 {

@@ -6,8 +6,7 @@ int main()
 	std::string texture_filename = "data/sprites/boss_01_dialog_pose_001_b.png";
 	std::string bad_texture_filename = "bad_prout.png";
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
-
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Test Texture");
 	textureManager.LoadTexture(bad_texture_filename);
 	sf::Sprite sprite;
 	sf::Texture* texture = textureManager.GetTexture(bad_texture_filename);

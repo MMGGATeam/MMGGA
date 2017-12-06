@@ -27,6 +27,8 @@ int main()
 
 		window.display();
 	}
-
+#ifdef WIN32
+	system("pause");
+#endif
 	return 0;
 }
