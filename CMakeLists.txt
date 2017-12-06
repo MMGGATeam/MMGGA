@@ -21,8 +21,7 @@ LIST(APPEND MMGGA_LIBRARIES
 	sfml-window
 	sfml-graphics
 	sfml-audio
-	sfml-network
-	sfml-main)
+	sfml-network)
 
 #SFML Imgui
 set(SFML_IMGUI ${EXTERNAL_DIR}/imgui-sfml/)
