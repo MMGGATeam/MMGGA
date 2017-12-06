@@ -25,7 +25,7 @@ SOFTWARE.
 #define MMGGA_TEXTURE_MANAGER_H
 #include <map>
 #include <string>
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 namespace mmgga
 {
@@ -33,7 +33,6 @@ class TextureManager
 {
 public:
 	TextureManager();
-	std::map<std::string, sf::Texture>textures_map;
 	/**
 	* \brief load texture from filename and ad it to textures_map
 	* \param filename where the texture is stocked
@@ -42,10 +41,10 @@ public:
 	sf::Texture* GetTexture(std::string textureName);
 	~TextureManager();
 private:
-	
+	std::map<std::string, sf::Texture>textures_map;
 };
 }
 
-#endif MMGGA_TEXTURE_MANAGER_H
+#endif //MMGGA_TEXTURE_MANAGER_H
 
 
