@@ -54,13 +54,14 @@ sf::Texture* TextureManager::GetTexture(std::string textureName)
 	{
 		if (textureName == it->first)
 		{
-			return &sf::Texture(it->second);
+			return &it->second;
 		}
 		else
 		{
 			break;
 		}
-	}	
+	}
+	return nullptr;
 }
 
 TextureManager::~TextureManager()

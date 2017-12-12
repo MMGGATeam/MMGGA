@@ -39,8 +39,7 @@ namespace fs = std::experimental::filesystem;
 
 namespace mmgga
 {
-
-void SceneManager::Init()
+	void SceneManager::Init()
 {
 	std::list<std::string>& scenesList = Engine::GetInstance()->GetConfig()->scenesList;
 	if(scenesList.size() > 0)
@@ -91,7 +90,7 @@ Scene* SceneManager::LoadScene(std::string sceneName)
 
 	for(json gameObjectJson : sceneJson["gameObjects"])
 	{
-		GameObject* gameObject = GameObject::LoadGameObject(gameObjectJson);
+		GameObject* gameObject = GameObject::LoadGameObject(gameObjectJson, engine);
 		if(gameObject)
 		{
 			scene->m_GameObjects.push_back(gameObject);

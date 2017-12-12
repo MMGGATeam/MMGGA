@@ -23,89 +23,42 @@ SOFTWARE.
 */
 
 #include <graphics/sprite.h>
+#include <memory>
+#include <experimental/filesystem>
+#include <graphics/texture_manager.h>
+
+namespace fs = std::experimental::filesystem;
 
 namespace mmgga
 {
-
-Sprite* Sprite::LoadSprite(json componentJson)
+void Sprite::Update(sf::Time dt)
 {
-	sf::Sprite newSprite;
-
-	/*newSprite.setOrigin(componentJson);
-	newSprite.setScale(componentJson);
-	newSprite.setTexture(mmgga::TextureManager::GetTexture());*/
 
 }
 
-void Sprite::Draw(sf::RenderWindow& window)
+Sprite* Sprite::LoadSprite(json componentJson, GameObject& gameObject)
 {
-	
-}
-
-unsigned int TextureManager::LoadTexture(std::string filename)
-{
-	if (nameIdsMap.find(filename) != nameIdsMap.end())
+	std::unique_ptr <mmgga::Sprite> newSprite = std::make_unique<mmgga::Sprite>(gameObject);
+	if (componentJson.find("path") != componentJson.end())
 	{
-		auto text_id = nameIdsMap[filename];
-		//Check if the texture was destroyed
-		auto checkTexture = texturesMap.find(text_id);
-		if (checkTexture != texturesMap.end())
+		newSprite->filename = componentJson["path"].get<std::string>();
+
+		if (fs::is_regular_file(newSprite->filename))
 		{
-			refCountMap[nameIdsMap[filename]]++;
-			return nameIdsMap[filename];
+			//Texture stuff
+			
 		}
 		else
 		{
-			sf::Texture texture;
-			if (!texture.loadFromFile(filename))
-				return 0U;
-			refCountMap[increment_id] = 1;
-			nameIdsMap[filename] = increment_id;
-			texturesMap[increment_id] = texture;
+			return nullptr;		
 		}
 	}
-	else
-	{
-		increment_id++;
-		sf::Texture texture;
-		if (!texture.loadFromFile(filename))
-			return 0U;
-		refCountMap[increment_id] = 1;
-		nameIdsMap[filename] = increment_id;
-		texturesMap[increment_id] = texture;
-	}
-	return 0U;
+	return nullptr;
 }
 
-
-
-
-
-void TextureManager::UnloadTexture(unsigned int text_id)
+void Sprite::SetFilename(std::string newFilename)
 {
-	auto checkRefCount = refCountMap.find(text_id);
-	if (checkRefCount != refCountMap.end())
-	{
-		refCountMap[text_id]--;
-		if (refCountMap[text_id] == 0)
-		{
-			//TODO: unload texture from text_id
-			refCountMap.erase(text_id);
-			texturesMap.erase(text_id);
-		}
-	}
-}
-
-sf::Texture* TextureManager::GetTexture(unsigned int text_id)
-{
-	if (texturesMap.find(text_id) != texturesMap.end())
-	{
-		return &texturesMap[text_id];
-	}
-	else
-	{
-		return nullptr;
-	}
+	filename = newFilename;
 }
 
 }

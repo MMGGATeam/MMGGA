@@ -40,7 +40,7 @@ class Scene;
 /**
 * \brief The Scene Manager do the transition between two scenes, read from the Engine Configuration the scenes build list
 */
-class SceneManager : public Module<SceneManager>
+class SceneManager : public Module
 {
 public:
 	/**
@@ -57,7 +57,6 @@ public:
 	*/
 	void Destroy() override;
 
-private:
 	/**
 	* \brief Load a Scene and create all its GameObject
 	* \param sceneName the scene path given by the configuration
@@ -65,6 +64,7 @@ private:
 	*/
 	Scene* LoadScene(std::string sceneName);
 
+private:
 
 	Scene* currentScene = nullptr;
 };

@@ -44,6 +44,10 @@ public:
 	* \brief Starting the Game Engine after the Init()
 	*/
 	void Start();
+	/**
+	* \brief Update the Game Engine after the Start()
+	*/
+	void Update(sf::Time dt);
 
 	~Engine();
 	/**
@@ -63,10 +67,13 @@ protected:
 /**
 * \brief Module are Singleton used by the Engine to init and update features
 */
-template<typename T>
-class Module : public Singleton<T>
+class Module 
 {
 public:
+	/**
+	* \brief constructor of Module taking Engine references in argument
+	*/
+	Module(Engine& engine);
 	/**
 	* \brief Called to initialize the module
 	*/
@@ -82,6 +89,7 @@ public:
 	virtual void Destroy() = 0;
 protected:
 	virtual ~Module() {};
+	Engine& engine;
 };
 
 }
