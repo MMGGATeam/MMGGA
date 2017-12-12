@@ -1,5 +1,6 @@
 #include <graphics/sprite.h>
 #include <json.hpp>
+#include <engine/game_object.h>
 // for convenience
 using json = nlohmann::json;
 
@@ -10,7 +11,16 @@ int main()
 
 	sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
 
-	mmgga::Sprite* sprite = mmgga::Sprite::LoadSprite(sprite_json);
+	mmgga::Engine engine;
+
+	engine.Init();
+
+	mmgga::GameObject gameObject(engine);
+	
+
+	
+
+	auto sprite = mmgga::Sprite::LoadSprite(sprite_json,gameObject);
 	 // run the program as long as the window is open
 	while (window.isOpen())
 	{

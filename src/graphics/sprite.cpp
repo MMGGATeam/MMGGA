@@ -23,13 +23,42 @@ SOFTWARE.
 */
 
 #include <graphics/sprite.h>
+#include <memory>
+#include <experimental/filesystem>
+#include <graphics/texture_manager.h>
+
+namespace fs = std::experimental::filesystem;
 
 namespace mmgga
 {
-
-Sprite* Sprite::LoadSprite(json componentJson)
+void Sprite::Update(sf::Time dt)
 {
+
+}
+
+Sprite* Sprite::LoadSprite(json componentJson, GameObject& gameObject)
+{
+	std::unique_ptr <mmgga::Sprite> newSprite = std::make_unique<mmgga::Sprite>(gameObject);
+	if (componentJson.find("path") != componentJson.end())
+	{
+		newSprite->filename = componentJson["path"].get<std::string>();
+
+		if (fs::is_regular_file(newSprite->filename))
+		{
+			//Texture stuff
+			
+		}
+		else
+		{
+			return nullptr;		
+		}
+	}
 	return nullptr;
+}
+
+void Sprite::SetFilename(std::string newFilename)
+{
+	filename = newFilename;
 }
 
 }

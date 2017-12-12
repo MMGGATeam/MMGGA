@@ -28,17 +28,22 @@
 
 namespace mmgga
 {
+	GameObject::GameObject(Engine& engine): engine(engine)
+	{
+
+	}
 	void GameObject::Update(sf::Time dt)
 {
 	for(Component* component : m_Components)
 	{
+
 	}
 }
 
-GameObject* GameObject::LoadGameObject(json gameObjectJson)
+GameObject* GameObject::LoadGameObject(json gameObjectJson, Engine& engine)
 {
 	std::string jsonName = gameObjectJson["name"];
-	GameObject* gameObject = new GameObject();
+	GameObject* gameObject = new GameObject(engine);
 	gameObject->name = jsonName;
 
 	for(json componentJson : gameObjectJson["components"])
@@ -51,7 +56,7 @@ GameObject* GameObject::LoadGameObject(json gameObjectJson)
 		}
 		else if(componentType == "Sprite")
 		{
-			component = Sprite::LoadSprite(componentJson);
+			component = Sprite::LoadSprite(componentJson,*gameObject);
 		}
 		if(component)
 		{

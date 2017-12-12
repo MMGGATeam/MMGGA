@@ -33,7 +33,7 @@ namespace mmgga
 /**
 * \brief Handles Input like the Keyboard, the Joystick or the Mouse
 */
-class InputManager : public Module<InputManager>
+class InputManager : public Module
 {
 public:
 	/**

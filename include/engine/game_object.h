@@ -32,6 +32,8 @@ using json = nlohmann::json;
 //STL includes
 #include <list>
 #include <string>
+//Engine
+#include <engine/engine.h>
 
 namespace mmgga
 {
@@ -45,6 +47,10 @@ class GameObject
 {
 public:
 	/**
+	* \brief constructor of GameObject taking Engine references in argument
+	*/
+	GameObject(Engine& engine);
+	/**
 	* \brief Update the GameObject and its Components
 	* \param dt Delta time since last frame
 	*/
@@ -54,10 +60,12 @@ public:
 	* \param gameObjectJson the sub json associated with the Game Object
 	* \return the heap GameObject that will need to be destroyed
 	*/
-	static GameObject* LoadGameObject(json gameObjectJson);
+	static GameObject* LoadGameObject(json gameObjectJson, Engine& engine);
+
 protected:
 	std::list<Component*> m_Components;
 	std::string name;
+	Engine& engine;
 };
 }
 #endif

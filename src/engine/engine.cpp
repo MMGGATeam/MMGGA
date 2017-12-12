@@ -39,9 +39,13 @@ namespace mmgga
 {
 
 
-void Engine::Init()
+Module::Module(Engine& engine) : engine(engine)
 {
 
+}
+
+void Engine::Init()
+{
 	m_Config = ConfigManager::GetInstance()->LoadConfig();
 
 	GraphicsManager::GetInstance()->Init();
@@ -51,8 +55,6 @@ void Engine::Init()
 
 	m_Window = GraphicsManager::GetInstance()->GetWindow();
 	running = true;
-
-
 }
 
 void Engine::Start()
@@ -61,30 +63,34 @@ void Engine::Start()
 	while (running)
 	{
 		sf::Time dt = clock.restart();
-		sf::Event event;
-		while (m_Window->pollEvent(event))
-		{
-			ImGui::SFML::ProcessEvent(event);
-			if (event.type == sf::Event::Closed)
-			{
-				Engine::GetInstance()->running = false;
-				m_Window->close();
-			}
-			if (event.type == sf::Event::KeyPressed)
-			{
-				if (event.key.code == sf::Keyboard::E)
-				{
-
-				}
-			}
-		}
-		InputManager::GetInstance()->Update(dt);
-		GraphicsManager::GetInstance()->Update(dt);
+		Update(dt);
 	}
 
 	GraphicsManager::GetInstance()->Destroy();
 	PythonManager::GetInstance()->Destroy();
+}
 
+void Engine::Update(sf::Time dt)
+{
+	sf::Event event;
+	while (m_Window->pollEvent(event))
+	{
+		ImGui::SFML::ProcessEvent(event);
+		if (event.type == sf::Event::Closed)
+		{
+			Engine::GetInstance()->running = false;
+			m_Window->close();
+		}
+		if (event.type == sf::Event::KeyPressed)
+		{
+			if (event.key.code == sf::Keyboard::E)
+			{
+
+			}
+		}
+	}
+	InputManager::GetInstance()->Update(dt);
+	GraphicsManager::GetInstance()->Update(dt);
 }
 
 Engine::~Engine()
@@ -100,5 +106,7 @@ Configuration* Engine::GetConfig()
 {
 	return m_Config;
 }
+
+
 
 }

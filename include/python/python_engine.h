@@ -32,7 +32,7 @@ namespace mmgga
 /**
 * \brief Manage the python interpreter
 */
-class PythonManager : public Module<PythonManager>
+class PythonManager : public Module
 {
 public:
 	/**

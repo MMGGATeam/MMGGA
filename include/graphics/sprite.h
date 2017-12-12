@@ -44,10 +44,13 @@ namespace mmgga
 class Sprite : public Component
 {
 public:
-	static Sprite* LoadSprite(json componentJson);
+	using Component::Component;
+	void Update(sf::Time dt) override;
+	static Sprite* LoadSprite(json componentJson, GameObject& gameObject);
+	void SetFilename(std::string newFilename);
 protected:
 	std::string filename;
-	sf::Sprite* sprite;
+	sf::Sprite sprite;
 };
 
 /**

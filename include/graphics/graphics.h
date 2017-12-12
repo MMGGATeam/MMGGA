@@ -33,7 +33,7 @@ namespace mmgga
 /**
 * \brief The Graphics Manager
 */
-class GraphicsManager : public Module<GraphicsManager>
+class GraphicsManager : public Module
 {
 public:
 
