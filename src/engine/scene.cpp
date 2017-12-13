@@ -36,7 +36,6 @@ using json = nlohmann::json;
 // for convenience
 namespace fs = std::experimental::filesystem;
 
-
 namespace mmgga
 {
 

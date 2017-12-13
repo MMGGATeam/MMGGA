@@ -22,9 +22,10 @@
  SOFTWARE.
  */
 
-#include <engine/game_object.h>
-#include <engine/component.h>
-#include <graphics/sprite.h>
+#include <engine\game_object.h>
+#include <engine\component.h>
+#include <graphics\sprite.h>
+#include <engine\log.h>
 
 namespace mmgga
 {
