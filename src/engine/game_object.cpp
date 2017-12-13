@@ -42,10 +42,24 @@ GameObject* GameObject::LoadGameObject(json gameObjectJson)
 	GameObject* gameObject = new GameObject();
 	gameObject->name = jsonName;
 
+	Log::GetInstance()->Msg(jsonName);
+
 	for(json componentJson : gameObjectJson["components"])
 	{
 		Component* component = nullptr;
-		std::string componentType = componentJson["type"];
+
+		std::string componentType;
+
+		try
+		{
+			 componentType = componentJson["type"].get<std::string>();
+		}
+		catch (json::type_error& e)
+		{
+			mmgga::Log::GetInstance()->Error("JSon Error type: " + componentJson["type"].type_name());
+			continue;
+		}
+
 		if(componentType == "Transform")
 		{
 			component = Transform::LoadTransform(componentJson);
