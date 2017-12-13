@@ -36,7 +36,7 @@ namespace mmgga
 class GraphicsManager : public Module
 {
 public:
-
+	using Module::Module;
 /**
 	* \brief Initialize the Graphics Manager
 	*/
@@ -64,6 +64,8 @@ protected:
 * \brief Write to log the OpenGL version
 */
 void CheckVersion();
+
+void Draw(sf::RenderWindow* window);
 
 sf::RenderWindow* m_Window = nullptr;
 };

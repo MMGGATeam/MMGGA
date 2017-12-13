@@ -41,19 +41,27 @@ namespace mmgga
 
 Module::Module(Engine& engine) : engine(engine)
 {
+	
+}
 
+Engine::Engine()
+{
+	m_PythonManager = std::make_shared<PythonManager>(*this);
+	m_SceneManager = std::make_shared<SceneManager>(*this);
+	m_InputManager = std::make_shared<InputManager>(*this);
+	m_GraphicsManager = std::make_shared<GraphicsManager>(*this);
+	m_Window = std::make_shared<sf::RenderWindow>(*this);
 }
 
 void Engine::Init()
 {
 	m_Config = ConfigManager::GetInstance()->LoadConfig();
 
-	GraphicsManager::GetInstance()->Init();
-	PythonManager::GetInstance()->Init();
-	InputManager::GetInstance()->Init();
-	SceneManager::GetInstance()->Init();
+	m_Window->
+	m_SceneManager->Init();
+	m_InputManager->Init();
+	m_PythonManager->Init();
 
-	m_Window = GraphicsManager::GetInstance()->GetWindow();
 	running = true;
 }
 
@@ -66,8 +74,8 @@ void Engine::Start()
 		Update(dt);
 	}
 
-	GraphicsManager::GetInstance()->Destroy();
-	PythonManager::GetInstance()->Destroy();
+	m_GraphicsManager->Destroy();
+	m_PythonManager->Destroy();
 }
 
 void Engine::Update(sf::Time dt)
@@ -78,7 +86,7 @@ void Engine::Update(sf::Time dt)
 		ImGui::SFML::ProcessEvent(event);
 		if (event.type == sf::Event::Closed)
 		{
-			Engine::GetInstance()->running = false;
+			mmgga::Engine::running = false;
 			m_Window->close();
 		}
 		if (event.type == sf::Event::KeyPressed)
@@ -89,8 +97,8 @@ void Engine::Update(sf::Time dt)
 			}
 		}
 	}
-	InputManager::GetInstance()->Update(dt);
-	GraphicsManager::GetInstance()->Update(dt);
+	m_GraphicsManager->Update(dt);
+	m_InputManager->Update(dt);
 }
 
 Engine::~Engine()

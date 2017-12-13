@@ -30,8 +30,10 @@ int main()
 {
     mmgga::Log::GetInstance()->Msg("MMGGA 0.1 by SAE Institute Switzerland AG");
     
-	mmgga::Engine::GetInstance()->Init();
-	mmgga::Engine::GetInstance()->Start();
+	/*mmgga::Engine engine;
+	engine.Init();
+	engine.Start();*/
+
 #ifdef WIN32
 	system("pause");
 #endif

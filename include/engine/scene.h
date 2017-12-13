@@ -43,6 +43,7 @@ class Scene;
 class SceneManager : public Module
 {
 public:
+	using Module::Module;
 	/**
 	* \brief Initialize the SceneManager, get the Configuration from Engine and save the Scene lists from it
 	*/

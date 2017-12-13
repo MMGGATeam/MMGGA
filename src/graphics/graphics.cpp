@@ -35,10 +35,10 @@ SOFTWARE.
 
 namespace mmgga
 {
-
+	
 void GraphicsManager::Init()
 {
-	Configuration* config = Engine::GetInstance()->GetConfig();
+	Configuration* config = engine.GetConfig();
 	m_Window = new sf::RenderWindow(sf::VideoMode(config->screenResolution.x, config->screenResolution.y), "MMGGA 0.1");
 	if (config->maxFramerate)
 	{

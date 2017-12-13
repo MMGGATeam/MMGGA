@@ -25,17 +25,37 @@ SOFTWARE.
 #ifndef MMGGA_ENGINE_H
 #define MMGGA_ENGINE_H
 
-#include <SFML/Graphics/RenderWindow.hpp>
+//Engine
 #include <engine/utility.h>
 #include <engine/config.h>
+
+//Dependancies
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <memory>
+
 namespace mmgga
 {
+	//class prototype
+	class PythonManager;
+
+	//class prototype
+	class SceneManager;
+
+	//class prototype
+	class InputManager;
+
+	//class prototype
+	class GraphicsManager;
 /**
 * \brief The main Engine class to centralise the frame process and the references
 */
-class Engine : public Singleton<Engine>
+class Engine
 {
 public:
+	/**
+	* \brief Constructor of the Engine
+	*/
+	Engine();
 	/**
 	* \brief Initialize all the modules of the Game Engine, reading the config file too
 	*/
@@ -56,12 +76,16 @@ public:
 	*/
 	Configuration* GetConfig();
 
-
 	bool running = false;
 	bool editor = false;
 protected:
-	sf::RenderWindow* m_Window = nullptr;
 	Configuration* m_Config = nullptr;
+
+	std::shared_ptr<sf::RenderWindow> m_Window;
+	std::shared_ptr<PythonManager> m_PythonManager;
+	std::shared_ptr<SceneManager> m_SceneManager;
+	std::shared_ptr<InputManager> m_InputManager;
+	std::shared_ptr<GraphicsManager> m_GraphicsManager;
 };
 
 /**

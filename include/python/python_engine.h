@@ -27,6 +27,7 @@
 
 #include <engine/engine.h>
 #include <SFML/System/Time.hpp>
+
 namespace mmgga
 {
 /**
@@ -35,6 +36,7 @@ namespace mmgga
 class PythonManager : public Module
 {
 public:
+	using Module::Module;
 	/**
 	* \brief Initialize the python interpreter
 	*/

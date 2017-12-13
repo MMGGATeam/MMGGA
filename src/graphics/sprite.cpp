@@ -31,6 +31,7 @@ namespace fs = std::experimental::filesystem;
 
 namespace mmgga
 {
+
 void Sprite::Update(sf::Time dt)
 {
 

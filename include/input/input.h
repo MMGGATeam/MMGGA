@@ -36,6 +36,7 @@ namespace mmgga
 class InputManager : public Module
 {
 public:
+	using Module::Module;
 	/**
 	 * \brief Initialize the Input Manager
 	 */

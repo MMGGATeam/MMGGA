@@ -41,7 +41,7 @@ namespace mmgga
 {
 	void SceneManager::Init()
 {
-	std::list<std::string>& scenesList = Engine::GetInstance()->GetConfig()->scenesList;
+	std::list<std::string>& scenesList = engine.GetConfig()->scenesList;
 	if(scenesList.size() > 0)
 	{
 		fs::path firstScenePath = *scenesList.begin();
