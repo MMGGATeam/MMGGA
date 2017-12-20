@@ -75,13 +75,16 @@ public:
 	* \return The Configuration struct got by the Engine
 	*/
 	Configuration* GetConfig();
+	/**
+	* \brief sf::window reference
+	*/
+	sf::RenderWindow* GetWindow();
 
 	bool running = false;
 	bool editor = false;
 protected:
 	Configuration* m_Config = nullptr;
-
-	std::shared_ptr<sf::RenderWindow> m_Window;
+	sf::RenderWindow* m_Window = nullptr;
 	std::shared_ptr<PythonManager> m_PythonManager;
 	std::shared_ptr<SceneManager> m_SceneManager;
 	std::shared_ptr<InputManager> m_InputManager;

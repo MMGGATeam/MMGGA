@@ -26,16 +26,14 @@ SOFTWARE.
 #include <memory>
 #include <experimental/filesystem>
 #include <graphics/texture_manager.h>
+#include <engine/engine.h>
 
 namespace fs = std::experimental::filesystem;
 
 namespace mmgga
 {
 
-void Sprite::Update(sf::Time dt)
-{
 
-}
 
 Sprite* Sprite::LoadSprite(json componentJson, GameObject& gameObject)
 {
@@ -46,8 +44,8 @@ Sprite* Sprite::LoadSprite(json componentJson, GameObject& gameObject)
 
 		if (fs::is_regular_file(newSprite->filename))
 		{
-			//Texture stuff
-			
+			//texture stuff
+
 		}
 		else
 		{
@@ -60,6 +58,20 @@ Sprite* Sprite::LoadSprite(json componentJson, GameObject& gameObject)
 void Sprite::SetFilename(std::string newFilename)
 {
 	filename = newFilename;
+}
+
+void Sprite::Draw(sf::RenderWindow * window)
+{
+	window->draw(sprite);
+}
+
+void Sprite::Update(sf::Time dt)
+{
+}
+
+SpriteManager::SpriteManager(GraphicsManager & graphicsManager): m_GraphicsManager(graphicsManager)
+{
+
 }
 
 }

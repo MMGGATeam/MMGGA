@@ -1,17 +1,20 @@
+#include <graphics/graphics.h>
 #include <graphics/texture_manager.h>
-
 int main()
 {
-	mmgga::TextureManager textureManager;
-	std::string texture_filename = "data/sprites/boss_01_dialog_pose_001_b.png";
-	std::string bad_texture_filename = "bad_prout.png";
+	std::string texture_filename = "C:/Users/guill/Pictures/128324.png";
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Test Texture");
-	textureManager.LoadTexture(bad_texture_filename);
+	mmgga::TextureManager textureManager;
+
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Test Texture");
+	textureManager.LoadTexture(texture_filename);
 	sf::Sprite sprite;
-	sf::Texture* texture = textureManager.GetTexture(bad_texture_filename);
-	if(texture != nullptr)
+	sf::Texture* texture = textureManager.GetTexture(texture_filename);
+
+	if (texture != nullptr)
+	{
 		sprite.setTexture(*texture);
+	}
 	 // run the program as long as the window is open
 	while (window.isOpen())
 	{

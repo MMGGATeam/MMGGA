@@ -28,6 +28,8 @@ SOFTWARE.
 
 namespace mmgga
 {
+	/*class TextureManager;
+	class SpriteManager;*/
 
 
 /**
@@ -37,37 +39,40 @@ class GraphicsManager : public Module
 {
 public:
 	using Module::Module;
-/**
-	* \brief Initialize the Graphics Manager
+	/**
+		* \brief Initialize the Graphics Manager
+		*/
+	void Init() override;
+
+	/**
+		* \brief Update the Graphics Manager and prepare for the rendering
+		* \param dt Delta time since last frame
+		*/
+	void Update(sf::Time dt) override;
+
+	/**
+	* \brief Destroy the window and other
 	*/
-void Init() override;
+	void Destroy() override;
 
-/**
-	* \brief Update the Graphics Manager and prepare for the rendering
-	* \param dt Delta time since last frame
+	/**
+	* \brief Getter of the window created in GraphicsManager
+	* \return The SFML window
 	*/
-void Update(sf::Time dt) override;
-
-/**
-* \brief Destroy the window and other
-*/
-void Destroy() override;
-
-/**
-* \brief Getter of the window created in GraphicsManager
-* \return The SFML window
-*/
-sf::RenderWindow* GetWindow();
+	sf::RenderWindow* GetWindow();
 
 protected:
-/**
-* \brief Write to log the OpenGL version
-*/
-void CheckVersion();
+	/**
+	* \brief Write to log the OpenGL version
+	*/
+	void CheckVersion();
 
-void Draw(sf::RenderWindow* window);
+	void Draw(sf::RenderWindow* window);
 
-sf::RenderWindow* m_Window = nullptr;
+	sf::RenderWindow* m_Window = nullptr;
+
+	/*std::shared_ptr<TextureManager> m_TextureManager;
+	std::shared_ptr<SpriteManager> m_SpriteManager;*/
 };
 
 }

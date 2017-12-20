@@ -27,14 +27,14 @@ SOFTWARE.
 #include <map>
 #include <string>
 #include <SFML/Graphics.hpp>
-
+#include <graphics/graphics.h>
 
 namespace mmgga
 {
 class TextureManager
 {
 public:
-	TextureManager();
+	//TextureManager(GraphicsManager& graphicsManager);
 	/**
 	* \brief load texture from filename and ad it to textures_map
 	* \param filename where the texture is stocked
@@ -47,6 +47,8 @@ public:
 	*/
 	sf::Texture* GetTexture(std::string textureName);
 	~TextureManager();
+protected:
+	//GraphicsManager& m_GraphicsManager;
 private:
 	std::map<std::string, sf::Texture>textures_map;
 };

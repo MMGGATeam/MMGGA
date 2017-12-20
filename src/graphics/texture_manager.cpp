@@ -27,10 +27,12 @@ SOFTWARE.
 namespace mmgga
 {
 
-TextureManager::TextureManager()
+
+
+/*TextureManager::TextureManager(GraphicsManager & graphicsManager): m_GraphicsManager(graphicsManager)
 {
 
-}
+}*/
 
 void TextureManager::LoadTexture(std::string filename)
 {

@@ -32,6 +32,7 @@ SOFTWARE.
 //Engine
 #include <engine/engine.h>
 #include <engine/component.h>
+#include <graphics/graphics.h>
 //Dependencies
 #include <SFML/Graphics.hpp>
 
@@ -45,9 +46,10 @@ class Sprite : public Component
 {
 public:
 	using Component::Component;
-	void Update(sf::Time dt) override;
 	static Sprite* LoadSprite(json componentJson, GameObject& gameObject);
 	void SetFilename(std::string newFilename);
+	void Draw(sf::RenderWindow* window);
+	void Update(sf::Time dt) override;
 protected:
 	std::string filename;
 	sf::Sprite sprite;
@@ -56,10 +58,13 @@ protected:
 /**
 * \brief Sprite manager caching all the sprites and rendering them at the end of the frame
 */
-class SpriteManager : public Singleton<SpriteManager>
+class SpriteManager
 {
+public:
+	SpriteManager(GraphicsManager& graphicsManager);
 protected:
 	std::list<sf::Sprite> sprites;
+	GraphicsManager& m_GraphicsManager;
 };
 
 

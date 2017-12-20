@@ -32,14 +32,24 @@ SOFTWARE.
 #include "imgui.h"
 
 #include <sstream>
+#include <graphics/sprite.h>
+#include <graphics/texture_manager.h>
 
 namespace mmgga
 {
 	
+
+	
+
+
 void GraphicsManager::Init()
 {
 	Configuration* config = engine.GetConfig();
 	m_Window = new sf::RenderWindow(sf::VideoMode(config->screenResolution.x, config->screenResolution.y), "MMGGA 0.1");
+
+	/*m_SpriteManager = std::make_shared<SpriteManager>(*this);
+	m_TextureManager = std::make_shared<TextureManager>(*this);*/
+
 	if (config->maxFramerate)
 	{
 		m_Window->setFramerateLimit(config->maxFramerate);
@@ -48,6 +58,8 @@ void GraphicsManager::Init()
 	//Init GUI
 	ImGui::SFML::Init(*(sf::RenderTarget*)m_Window);
 }
+
+
 
 void GraphicsManager::Update(sf::Time dt)
 {
@@ -73,6 +85,10 @@ void GraphicsManager::CheckVersion()
 	Log::GetInstance()->Msg(log_message.str());
 }
 
+void GraphicsManager::Draw(sf::RenderWindow * window)
+{
+	
+}
 
 void GraphicsManager::Destroy()
 {
