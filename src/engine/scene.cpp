@@ -87,8 +87,9 @@ Scene* SceneManager::LoadScene(std::string sceneName)
 	}
 
 	Scene* scene = new Scene();
-	scene->name == sceneJson["sceneName"];
-	std::cout << scene->name;
+	scene->name = sceneJson["sceneName"].get<std::string>();
+	mmgga::Log::GetInstance()->Msg(scene->name);
+
 
 	for(json gameObjectJson : sceneJson["gameObjects"])
 	{
