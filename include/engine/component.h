@@ -59,13 +59,9 @@ protected:
 class Transform : public Component
 {
 public:
-	/**
-	 * \brief Constructor of Transform takes the parent GameObject as reference
-	 * \param parentGameObject
-	 */
-	Transform(GameObject& parentGameObject);
+	using Component::Component;
 
-	static Transform* LoadTransform(json componentJson);
+	static Transform* LoadTransform(json componentJson, GameObject& parentGameObject);
 
 	void Update(sf::Time dt) override;
 

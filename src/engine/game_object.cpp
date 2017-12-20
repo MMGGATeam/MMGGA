@@ -62,7 +62,7 @@ GameObject* GameObject::LoadGameObject(json gameObjectJson)
 
 		if(componentType == "Transform")
 		{
-			component = Transform::LoadTransform(componentJson);
+			component = Transform::LoadTransform(componentJson,*gameObject);
 		}
 		else if(componentType == "Sprite")
 		{

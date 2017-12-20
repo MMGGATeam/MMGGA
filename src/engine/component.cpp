@@ -23,6 +23,8 @@
  */
 
 #include <engine/component.h>
+#include <engine/log.h>
+#include <string>
 namespace mmgga
 {
 
@@ -32,9 +34,20 @@ Component::Component(GameObject& parentObject) :
 	
 }
 
-Transform* Transform::LoadTransform(json componentJson)
+Transform* Transform::LoadTransform(json transformJson, GameObject& parentGameObject)
 {
-	return nullptr;
+	Transform* newTransform = new Transform(parentGameObject);
+	newTransform->SetPosition(sf::Vector2f(transformJson["position"][0], transformJson["position"][1]));
+	newTransform->SetScale(sf::Vector2f(transformJson["scale"][0], transformJson["scale"][1]));
+	newTransform->SetEulerAngle(transformJson["eulerAngle"]);
+
+	mmgga::Log::GetInstance()->Msg("EulerAngler: " + std::to_string(newTransform->GetEulerAngle()));
+	mmgga::Log::GetInstance()->Msg("Scale: x: " + std::to_string(newTransform->GetScale().x) + " y: " + 
+		std::to_string(newTransform->GetScale().y));
+	mmgga::Log::GetInstance()->Msg("Position: x: " + std::to_string(newTransform->GetPosition().x) + " y: " +
+		std::to_string(newTransform->GetPosition().y));
+
+	return newTransform;
 }
 
 void Transform::Update(sf::Time dt)
