@@ -47,7 +47,7 @@ void SceneManager::Init()
 		fs::path firstScenePath = *scenesList.begin();
 		if (fs::is_regular_file(firstScenePath))
 		{
-			if (firstScenePath.extension() == fs::path(".scene"))
+			if (firstScenePath.extension() == fs::path(".json"))
 			{
 				currentScene = LoadScene(firstScenePath.string());
 			}
@@ -67,13 +67,15 @@ void SceneManager::Update(sf::Time dt)
 
 Scene* SceneManager::LoadScene(std::string sceneName)
 {
-	std::ifstream sceneFile(sceneName.c_str());
+	std::ifstream sceneFile(sceneName);
 	if (sceneFile.peek() == std::ifstream::traits_type::eof())
 	{
 		Log::GetInstance()->Error("EMPTY SCENE FILE");
 		return nullptr;
 	}
+
 	json sceneJson;
+
 	try
 	{
 		sceneFile >> sceneJson;
@@ -85,7 +87,7 @@ Scene* SceneManager::LoadScene(std::string sceneName)
 	}
 
 	Scene* scene = new Scene();
-	scene->name == sceneJson["name"];
+	scene->name == sceneJson["sceneName"];
 	std::cout << scene->name;
 
 	for(json gameObjectJson : sceneJson["gameObjects"])
