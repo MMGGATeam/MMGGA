@@ -64,6 +64,11 @@ namespace mmgga
 		*/
 		Scene* LoadScene(std::string sceneName);
 
+		/**
+		* \brief Save a Scene on a JSon file
+		* \param scene which must be save
+		*/
+		void SaveScene(Scene* scene);
 	private:
 
 		Scene* currentScene = nullptr;

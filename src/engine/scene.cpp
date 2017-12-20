@@ -65,6 +65,27 @@ void SceneManager::Update(sf::Time dt)
 	}
 }
 
+void SceneManager::SaveScene(Scene* scene)
+{
+	json j2 = {
+		{ "pi", 3.141 },
+		{ "happy", true },
+		{ "name", "Niels" },
+		{ "nothing", nullptr },
+		{ "answer",{
+			{ "everything", 42 }
+		} },
+		{ "list",{ 1, 0, 2 } },
+		{ "object",{
+			{ "currency", "USD" },
+			{ "value", 42.99 }
+		} }
+	};
+
+	std::ofstream o("data/scenes/pretty.json");
+	o << std::setw(4) << j2 << std::endl;
+}
+
 Scene* SceneManager::LoadScene(std::string sceneName)
 {
 	std::ifstream sceneFile(sceneName);

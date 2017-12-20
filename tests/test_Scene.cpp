@@ -24,6 +24,8 @@ int main()
 		return EXIT_FAILURE;
 	}
 
+	sceneManagerTest.SaveScene(sceneTest);
+
 	system("pause");
 	return EXIT_SUCCESS;
 }
