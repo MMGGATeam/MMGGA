@@ -1,8 +1,8 @@
 {
-	"name": "SceneTest",
+	"sceneName": "SceneTest",
 	"gameObjects": [
 		{
-			"name": "SpriteTest",
+			"name": "Sprite_Test",
 			"components": [
 				{
 					"type": "Transform",

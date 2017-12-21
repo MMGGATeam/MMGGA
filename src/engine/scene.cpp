@@ -36,7 +36,6 @@ using json = nlohmann::json;
 // for convenience
 namespace fs = std::experimental::filesystem;
 
-
 namespace mmgga
 {
 
@@ -48,7 +47,7 @@ void SceneManager::Init()
 		fs::path firstScenePath = *scenesList.begin();
 		if (fs::is_regular_file(firstScenePath))
 		{
-			if (firstScenePath.extension() == fs::path(".scene"))
+			if (firstScenePath.extension() == fs::path(".json"))
 			{
 				currentScene = LoadScene(firstScenePath.string());
 			}
@@ -66,15 +65,38 @@ void SceneManager::Update(sf::Time dt)
 	}
 }
 
+void SceneManager::SaveScene(Scene* scene)
+{
+	json j2 = {
+		{ "pi", 3.141 },
+		{ "happy", true },
+		{ "name", "Niels" },
+		{ "nothing", nullptr },
+		{ "answer",{
+			{ "everything", 42 }
+		} },
+		{ "list",{ 1, 0, 2 } },
+		{ "object",{
+			{ "currency", "USD" },
+			{ "value", 42.99 }
+		} }
+	};
+
+	std::ofstream o("data/scenes/pretty.json");
+	o << std::setw(4) << j2 << std::endl;
+}
+
 Scene* SceneManager::LoadScene(std::string sceneName)
 {
-	std::ifstream sceneFile(sceneName.c_str());
+	std::ifstream sceneFile(sceneName);
 	if (sceneFile.peek() == std::ifstream::traits_type::eof())
 	{
 		Log::GetInstance()->Error("EMPTY SCENE FILE");
 		return nullptr;
 	}
+
 	json sceneJson;
+
 	try
 	{
 		sceneFile >> sceneJson;
@@ -86,8 +108,9 @@ Scene* SceneManager::LoadScene(std::string sceneName)
 	}
 
 	Scene* scene = new Scene();
-	scene->name == sceneJson["name"];
-	std::cout << scene->name;
+	scene->name = sceneJson["sceneName"].get<std::string>();
+	mmgga::Log::GetInstance()->Msg(scene->name);
+
 
 	for(json gameObjectJson : sceneJson["gameObjects"])
 	{
