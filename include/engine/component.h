@@ -53,7 +53,6 @@ public:
 protected:
 	GameObject& gameObject;
 	Transform* transform = nullptr;
-
 };
 
 class Transform : public Component
@@ -97,6 +96,8 @@ public:
 	* \param Scale
 	*/
 	void SetScale(sf::Vector2f scale);
+
+	json SaveTransform();
 
 private:
 	sf::Vector2f position = sf::Vector2f(0.f, 0.f);

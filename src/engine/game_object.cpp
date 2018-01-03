@@ -60,6 +60,8 @@ GameObject* GameObject::LoadGameObject(json gameObjectJson)
 			continue;
 		}
 
+		mmgga::Log::GetInstance()->Msg(componentType);
+		
 		if(componentType == "Transform")
 		{
 			component = Transform::LoadTransform(componentJson,*gameObject);

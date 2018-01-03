@@ -22,8 +22,8 @@
  SOFTWARE.
  */
 
-#ifndef MMGGA_UTILIY_H
-#define MMGGA_UTILIY_H
+#ifndef MMGGA_UTILITY_H
+#define MMGGA_UTILITY_H
 
 #include <stdlib.h> // size_t
 #include <string>
