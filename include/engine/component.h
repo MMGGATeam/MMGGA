@@ -62,20 +62,46 @@ public:
 	using Component::Component;
 
 	static Transform* LoadTransform(json componentJson, GameObject& parentGameObject);
-
+	/**
+	* \brief Update the Component
+	* \param dt Delta time since last frame
+	*/
 	void Update(sf::Time dt) override;
-
+	/**
+	* \brief Get the Euler Angle
+	* \return the Euler Angle
+	*/
 	float GetEulerAngle();
+	/**
+	* \brief Set the Euler Angle
+	* \param Euler Angle
+	*/
 	void SetEulerAngle(float eulerAngle);
+	/**
+	* \brief Get the position
+	* \return the position
+	*/
 	sf::Vector2f GetPosition();
+	/**
+	* \brief Set the position
+	* \param position
+	*/
 	void SetPosition(sf::Vector2f position);
+	/**
+	* \brief Get the Scale
+	* \return the Scale
+	*/
 	sf::Vector2f GetScale();
+	/**
+	* \brief Set the Scale
+	* \param Scale
+	*/
 	void SetScale(sf::Vector2f scale);
 
 private:
-	sf::Vector2f position;
-	sf::Vector2f scale;
-	float eulerAngle;
+	sf::Vector2f position = sf::Vector2f(0.f, 0.f);
+	sf::Vector2f scale = sf::Vector2f(1.f,1.f);
+	float eulerAngle = 0.f;
 
 };
 }

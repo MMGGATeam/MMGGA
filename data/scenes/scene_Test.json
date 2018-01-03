@@ -7,7 +7,7 @@
 				{
 					"type": "Transform",
 					"position": [300, 300],
-					"scale" : [1.0,1.0,1.0],
+					"scale" : [1.0,1.0],
 					"eulerAngle": 0.0
 				},
 				{
