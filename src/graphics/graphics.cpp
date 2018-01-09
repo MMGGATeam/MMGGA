@@ -47,8 +47,9 @@ void GraphicsManager::Init()
 	Configuration* config = engine.GetConfig();
 	m_Window = new sf::RenderWindow(sf::VideoMode(config->screenResolution.x, config->screenResolution.y), "MMGGA 0.1");
 
-	/*m_SpriteManager = std::make_shared<SpriteManager>(*this);
-	m_TextureManager = std::make_shared<TextureManager>(*this);*/
+	
+	m_TextureManager = std::make_shared<TextureManager>(*this);
+	m_SpriteManager = std::make_shared<SpriteManager>(*this,*m_TextureManager);
 
 	if (config->maxFramerate)
 	{
@@ -74,6 +75,16 @@ void GraphicsManager::Update(sf::Time dt)
 sf::RenderWindow * GraphicsManager::GetWindow()
 {
 	return m_Window;
+}
+
+std::shared_ptr<SpriteManager> GraphicsManager::GetSpriteManager()
+{
+	return m_SpriteManager;
+}
+
+std::shared_ptr<TextureManager> GraphicsManager::GetTextureManager()
+{
+	return m_TextureManager;
 }
 
 void GraphicsManager::CheckVersion()

@@ -2,36 +2,40 @@
 #include <json.hpp>
 #include <engine/game_object.h>
 #include <engine/engine.h>
+#include <graphics/texture_manager.h>
 
 // for convenience
 using json = nlohmann::json;
 
 int main()
 {
+	
+	std::string texturePath = "C:/Users/guill/Pictures/Policeman_Male.png";
+	
 	json sprite_json;
-	sprite_json["path"] = "C:/Users/guill/Pictures/128324.png";
+
+	sprite_json["path"] = texturePath;
 
 	mmgga::Engine engine;
-	
+
 	engine.Init();
 
-	sf::RenderWindow* window = engine.GetWindow();
+	auto graphicsManager = engine.GetGraphicsManager();
+	auto spriteManager = graphicsManager->GetSpriteManager();
 
+	sf::RenderWindow* window = engine.GetWindow();
 	mmgga::GameObject gameObject(engine);
 
-	auto sprite = mmgga::Sprite::LoadSprite(sprite_json,gameObject);
-	 // run the program as long as the window is open
+	auto sprite = spriteManager->LoadSprite(sprite_json, gameObject);
+
 	while (window->isOpen())
-	{
-		// check all the window's events that were triggered since the last iteration of the loop
+	{	
 		sf::Event event;
 		while (window->pollEvent(event))
 		{
-			// "close requested" event: we close the window
 			if (event.type == sf::Event::Closed)
 				window->close();
 		}
-
 		window->clear();
 		sprite->Draw(window);
 		window->display();

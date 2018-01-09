@@ -101,6 +101,11 @@ void Engine::Update(sf::Time dt)
 	m_InputManager->Update(dt);
 }
 
+std::shared_ptr<GraphicsManager> Engine::GetGraphicsManager()
+{
+	return m_GraphicsManager;
+}
+
 Engine::~Engine()
 {
 	if (m_Config)

@@ -27,6 +27,7 @@ SOFTWARE.
 #include <experimental/filesystem>
 #include <graphics/texture_manager.h>
 #include <engine/engine.h>
+#include <engine/log.h>
 
 namespace fs = std::experimental::filesystem;
 
@@ -34,25 +35,30 @@ namespace mmgga
 {
 
 
-
-Sprite* Sprite::LoadSprite(json componentJson, GameObject& gameObject)
+Sprite* SpriteManager::LoadSprite(json componentJson, GameObject& gameObject)
 {
-	std::unique_ptr <mmgga::Sprite> newSprite = std::make_unique<mmgga::Sprite>(gameObject);
+	Sprite* newSprite = new Sprite(gameObject);
+
 	if (componentJson.find("path") != componentJson.end())
 	{
 		newSprite->filename = componentJson["path"].get<std::string>();
+		Log::GetInstance()->Msg("Sprite load");
 
 		if (fs::is_regular_file(newSprite->filename))
 		{
-			//texture stuff
+			Log::GetInstance()->Msg(newSprite->filename);
+			m_TextureManager.LoadTexture(newSprite->filename);
+			auto loadedTexture = m_TextureManager.GetTexture(newSprite->filename);
 
+			if (loadedTexture != nullptr)
+			{
+				newSprite->SetTexture(*loadedTexture);
+			}
+			Log::GetInstance()->Msg("Texture add to sprite");
+			return newSprite;
 		}
-		else
-		{
-			return nullptr;		
-		}
+		return nullptr;			
 	}
-	return nullptr;
 }
 
 void Sprite::SetFilename(std::string newFilename)
@@ -60,7 +66,7 @@ void Sprite::SetFilename(std::string newFilename)
 	filename = newFilename;
 }
 
-void Sprite::Draw(sf::RenderWindow * window)
+void Sprite::Draw(sf::RenderWindow *window)
 {
 	window->draw(sprite);
 }
@@ -69,7 +75,22 @@ void Sprite::Update(sf::Time dt)
 {
 }
 
-SpriteManager::SpriteManager(GraphicsManager & graphicsManager): m_GraphicsManager(graphicsManager)
+void Sprite::SetTexture(sf::Texture & texture)
+{
+	sprite.setTexture(texture);
+}
+
+const sf::Texture * Sprite::GetTexture()
+{
+	return sprite.getTexture();
+}
+
+Sprite::~Sprite()
+{
+}
+
+SpriteManager::SpriteManager(GraphicsManager & graphicsManager, TextureManager & textureManager) :
+	m_GraphicsManager(graphicsManager), m_TextureManager(textureManager)
 {
 
 }

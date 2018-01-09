@@ -56,7 +56,9 @@ GameObject* GameObject::LoadGameObject(json gameObjectJson, Engine& engine)
 		}
 		else if(componentType == "Sprite")
 		{
-			component = Sprite::LoadSprite(componentJson,*gameObject);
+			auto graphicsManager = engine.GetGraphicsManager();
+			auto spriteManager = graphicsManager->GetSpriteManager();
+			component = spriteManager->LoadSprite(componentJson,*gameObject);
 		}
 		if(component)
 		{

@@ -46,10 +46,14 @@ class Sprite : public Component
 {
 public:
 	using Component::Component;
-	static Sprite* LoadSprite(json componentJson, GameObject& gameObject);
+	Sprite();	
 	void SetFilename(std::string newFilename);
-	void Draw(sf::RenderWindow* window);
+	void Draw(sf::RenderWindow *window);
 	void Update(sf::Time dt) override;
+	void SetTexture(sf::Texture &texture);
+	const sf::Texture* GetTexture();
+	friend class SpriteManager;
+	~Sprite();
 protected:
 	std::string filename;
 	sf::Sprite sprite;
@@ -61,10 +65,12 @@ protected:
 class SpriteManager
 {
 public:
-	SpriteManager(GraphicsManager& graphicsManager);
+	SpriteManager(GraphicsManager& graphicsManager, TextureManager& textureManager);
+	Sprite* LoadSprite(json componentJson, GameObject& gameObject);
 protected:
 	std::list<sf::Sprite> sprites;
 	GraphicsManager& m_GraphicsManager;
+	TextureManager& m_TextureManager;
 };
 
 

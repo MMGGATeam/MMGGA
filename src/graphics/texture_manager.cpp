@@ -23,16 +23,17 @@ SOFTWARE.
 */
 
 #include "graphics/texture_manager.h"
+#include <engine/log.h>
 
 namespace mmgga
 {
 
 
 
-/*TextureManager::TextureManager(GraphicsManager & graphicsManager): m_GraphicsManager(graphicsManager)
+TextureManager::TextureManager(GraphicsManager & graphicsManager): m_GraphicsManager(graphicsManager)
 {
 
-}*/
+}
 
 void TextureManager::LoadTexture(std::string filename)
 {
@@ -43,20 +44,24 @@ void TextureManager::LoadTexture(std::string filename)
 			return;
 		}
 	}
-	sf::Texture texture;
-	if (texture.loadFromFile(filename))
+
+	std::shared_ptr<sf::Texture> texture = std::make_shared<sf::Texture>();
+
+	if (texture->loadFromFile(filename))
 	{
 		textures_map[filename] = texture;
+		Log::GetInstance()->Msg("Texture load");
 	}
 }
 
-sf::Texture* TextureManager::GetTexture(std::string textureName)
+std::shared_ptr<sf::Texture> TextureManager::GetTexture(std::string textureName)
 {
 	for (auto it = textures_map.begin(); it != textures_map.end(); it++)
 	{
 		if (textureName == it->first)
 		{
-			return &it->second;
+			Log::GetInstance()->Msg("Get texture");
+			return it->second;	
 		}
 		else
 		{

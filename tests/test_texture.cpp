@@ -1,19 +1,25 @@
+
 #include <graphics/graphics.h>
 #include <graphics/texture_manager.h>
+
 int main()
 {
-	std::string texture_filename = "C:/Users/guill/Pictures/128324.png";
+	
+	std::string texture1 = "C:/Users/guill/Pictures/Policeman_Male.png";
 
-	mmgga::TextureManager textureManager;
+	mmgga::Engine engine;
+	auto graphicsManager = engine.GetGraphicsManager();
+	auto textureManager = graphicsManager->GetTextureManager();
 
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Test Texture");
-	textureManager.LoadTexture(texture_filename);
+	textureManager->LoadTexture(texture1);
 	sf::Sprite sprite;
-	sf::Texture* texture = textureManager.GetTexture(texture_filename);
+	auto texture = textureManager->GetTexture(texture1);
 
 	if (texture != nullptr)
 	{
 		sprite.setTexture(*texture);
+		sprite.setPosition(sf::Vector2f(800, 100));
 	}
 	 // run the program as long as the window is open
 	while (window.isOpen())

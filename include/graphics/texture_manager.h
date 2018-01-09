@@ -34,7 +34,7 @@ namespace mmgga
 class TextureManager
 {
 public:
-	//TextureManager(GraphicsManager& graphicsManager);
+	TextureManager(GraphicsManager& graphicsManager);
 	/**
 	* \brief load texture from filename and ad it to textures_map
 	* \param filename where the texture is stocked
@@ -45,12 +45,11 @@ public:
 	* \param filename where the texture is stocked
 	* \return pointer to sf::Texture or nullptr
 	*/
-	sf::Texture* GetTexture(std::string textureName);
+	std::shared_ptr<sf::Texture> GetTexture(std::string textureName);
 	~TextureManager();
 protected:
-	//GraphicsManager& m_GraphicsManager;
-private:
-	std::map<std::string, sf::Texture>textures_map;
+	GraphicsManager& m_GraphicsManager;
+	std::map<std::string, std::shared_ptr<sf::Texture>>textures_map;
 };
 }
 

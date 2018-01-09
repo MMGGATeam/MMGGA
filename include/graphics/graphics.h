@@ -28,8 +28,8 @@ SOFTWARE.
 
 namespace mmgga
 {
-	/*class TextureManager;
-	class SpriteManager;*/
+	class TextureManager;
+	class SpriteManager;
 
 
 /**
@@ -61,6 +61,9 @@ public:
 	*/
 	sf::RenderWindow* GetWindow();
 
+	std::shared_ptr<SpriteManager> GetSpriteManager();
+	std::shared_ptr<TextureManager> GetTextureManager();
+
 protected:
 	/**
 	* \brief Write to log the OpenGL version
@@ -71,8 +74,8 @@ protected:
 
 	sf::RenderWindow* m_Window = nullptr;
 
-	/*std::shared_ptr<TextureManager> m_TextureManager;
-	std::shared_ptr<SpriteManager> m_SpriteManager;*/
+	std::shared_ptr<TextureManager> m_TextureManager;
+	std::shared_ptr<SpriteManager> m_SpriteManager;
 };
 
 }

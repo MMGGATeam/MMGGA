@@ -69,6 +69,11 @@ public:
 	*/
 	void Update(sf::Time dt);
 
+	std::shared_ptr<GraphicsManager> GetGraphicsManager();
+
+	
+
+
 	~Engine();
 	/**
 	* \brief A getter of the Configuration
